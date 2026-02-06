@@ -138,7 +138,7 @@ def export_bitwarden_and_send_email():
         # 4. 登录
         print("🔄 登录 Bitwarden...")
         cmd = f"echo '{BW_PASSWORD}' | {bw_cmd} login {BW_EMAIL}"
-        stdout, stderr, rc = run_command(cmd, timeout=60)
+        stdout, stderr, rc = run_command(cmd)
         if rc != 0:
             error_msg = f"登录失败：{stderr}"
             if "master password is incorrect" in stderr.lower():
@@ -151,7 +151,7 @@ def export_bitwarden_and_send_email():
         # 5. 导出密码
         print("🔄 导出密码库...")
         cmd = f"echo '{BW_PASSWORD}' | {bw_cmd} export --format json --output {OUTPUT_FILE}"
-        stdout, stderr, rc = run_command(cmd, timeout=60)
+        stdout, stderr, rc = run_command(cmd)
         if rc != 0:
             print(f"❌ 导出失败：{stderr}")
             return False
