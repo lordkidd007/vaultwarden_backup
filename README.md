@@ -60,13 +60,10 @@
 
 1. **定时触发**: 每天北京时间 8 点自动执行
 
-2. 手动触发:
-
-   - 进入仓库 Actions 页面
-- 选择 "Vaultwarden 备份到邮箱" workflow
+2. **手动触发**:
+- 进入仓库 Actions 页面
+   - 选择 "Vaultwarden 备份到邮箱" workflow
    - 点击 "Run workflow" 手动执行
-   
-   
 
 3. **推送触发**: 代码推送到仓库时自动执行
 
