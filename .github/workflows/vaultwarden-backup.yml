@@ -20,12 +20,9 @@ jobs:
 
       - name: Download Bitwarden CLI
         run: |
-          ls -al
           unzip bw-linux-2025.12.1.zip
-          ls -al
           chmod +x bw
-          ls -al
-          
+          ls -al         
 
       - name: Run backup script
         env:
