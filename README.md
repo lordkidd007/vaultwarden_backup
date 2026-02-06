@@ -1,10 +1,11 @@
 # Vaultwarden 自动备份脚本
+[![Vaultwarden 备份到邮箱](https://github.com/lordkidd007/vaultwarden_backup/actions/workflows/vaultwarden-backup.yml/badge.svg)](https://github.com/lordkidd007/vaultwarden_backup/actions/workflows/vaultwarden-backup.yml)
 
 通过 GitHub Actions 实现 Vaultwarden (Bitwarden) 密码库的定时自动备份，并将加密的备份文件发送到指定邮箱。
 
 ## ✨ 功能特性
 
-- **定时备份**: 每天 UTC 0 点 (北京时间 8 点) 自动执行
+- **定时备份**: 每天 UTC 16 点 (北京时间 0 点) 自动执行
 - **手动触发**: 支持随时手动运行备份任务
 - **推送触发**: 代码更新时自动执行备份，确保配置生效
 - **安全加密**: 备份文件使用 GPG 加密，保障数据安全
