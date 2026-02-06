@@ -8,7 +8,8 @@ import os
 import sys
 import time
 import json
-
+os.environ['TZ'] = 'Asia/Shanghai'  # 强制设置为北京时间
+time.tzset()  # 让时区生效
 # --- 配置读取（从环境变量获取） ---
 # Bitwarden 配置
 BW_SERVER = os.getenv("BW_SERVER", "https://vault.bitwarden.com")
