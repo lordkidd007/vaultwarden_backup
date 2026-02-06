@@ -1,0 +1,36 @@
+name: Vaultwarden 备份到邮箱
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # 每天 UTC 0 点（北京时间 8 点）运行
+  workflow_dispatch: # 允许手动触发
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Download Bitwarden CLI
+        run: |
+          ls -al
+          chmod +x bw
+
+      - name: Run backup script
+        env:
+          # 从 GitHub Secrets 读取敏感信息
+          BW_EMAIL: ${{ secrets.BW_EMAIL }}
+          BW_PASSWORD: ${{ secrets.BW_PASSWORD }}
+          BW_SERVER: ${{ secrets.BW_SERVER }}
+          EMAIL_USER: ${{ secrets.EMAIL_USER }}
+          EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
+          EMAIL_SMTP_HOST: ${{ secrets.EMAIL_SMTP_HOST }}
+          EMAIL_SMTP_PORT: ${{ secrets.EMAIL_SMTP_PORT }}
+          EMAIL_RECEIVERS: ${{ secrets.EMAIL_RECEIVERS }}
+        run: python vaultwarden_backup.py
